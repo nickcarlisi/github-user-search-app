@@ -141,6 +141,10 @@ body {
     border-radius: 10px;
     font-size: 0.875rem;
     cursor: pointer;
+
+    &:hover {
+      background-color: #60abff;
+    }
   }
 }
 
@@ -298,6 +302,15 @@ body {
     padding: 0.25em;
   }
 
+  a {
+    text-decoration: none;
+    color: var(--blue-grey);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   .icon {
     vertical-align: middle;
     margin-right: 0.5em;
@@ -313,11 +326,11 @@ body {
     display: flex;
 
     .col-1 {
-      flex: 50%;
+      flex: auto;
     }
 
     .col-2 {
-      flex: 50%;
+      flex: auto;
     }
   }
 }

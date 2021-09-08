@@ -15,6 +15,7 @@ const getUser = async function (searchResult) {
   } else {
     removeError();
     const json = await res.json();
+    console.log(json);
     return json;
   }
 };
@@ -73,15 +74,21 @@ const createCard = (data) => {
           </div>
           <div>
             <img class="icon website-icon" src="./assets/icon-website.svg">
-            <p class="website">${data.blog ? data.blog : "Not Available"}</p>
+            <p class="website">
+            <a href=${data.blog ? data.blog : ""}>
+            ${data.blog ? data.blog : "Not Available"}</a>
+            </p>
           </div>
         </div>
         <div class="col col-2">
           <div>
             <img class="icon twitter-icon" src="./assets/icon-twitter.svg">
-            <p class="twitter">${
+            <p class="twitter">
+            <a href=${data.twitter_username ? data.twitter_username : ""}>
+            ${
               data.twitter_username ? data.twitter_username : "Not Available"
-            }</p>
+            }</a>
+            </p>
           </div>
           <div>
             <img class="icon company-icon" src="./assets/icon-company.svg">
