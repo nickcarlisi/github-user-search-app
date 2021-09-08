@@ -1,0 +1,323 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+//regular colors
+:root {
+  --primary-blue: #0079ff;
+  --grey-blue: #697c9a;
+  --blue-grey: #4b6a9b;
+  --dark-grey: #2b3442;
+  --light-grey: #f6f8ff;
+  --off-white: #fefefe;
+  --btn-text: #fff;
+}
+
+.dark {
+  --blue-grey: #fff;
+  --dark-grey: #fff;
+  --light-grey: #141d2f;
+  --off-white: #1e2a47;
+}
+
+//dark-mode colors
+
+$tablet-width: 768px;
+$desktop-width: 1440px;
+
+@mixin mq($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  background-color: var(--light-grey);
+  font-size: 0.813rem;
+  font-weight: 200;
+  line-height: 25px;
+  height: 100vh;
+  color: var(--blue-grey);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.25em;
+
+  .logo {
+    font-size: 1.625rem;
+    color: var(--dark-grey);
+    font-weight: bold;
+  }
+
+  .mode {
+    cursor: pointer;
+
+    span {
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+    }
+
+    img {
+      vertical-align: middle;
+      padding-left: 0.5em;
+    }
+  }
+}
+
+.form {
+  border-radius: 1em;
+  background-color: var(--off-white);
+  padding: 0.5em;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.5em;
+
+    @include mq($tablet-width) {
+      width: 1.5em;
+      height: 1.5em;
+      margin-left: 1.5em;
+    }
+  }
+
+  .input {
+    font-family: "Space Mono", monospace;
+    flex: 1;
+    border: none;
+    background-color: var(--off-white);
+    color: var(--dark-grey);
+
+    @include mq($tablet-width) {
+      font-size: 1.125rem;
+      padding-left: 1em;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: var(--blue-grey);
+
+      @include mq($tablet-width) {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  .no-result-error {
+    color: red;
+    margin-right: 1em;
+    font-size: 0.938rem;
+  }
+
+  .btn {
+    background-color: var(--primary-blue);
+    border: none;
+    padding: 1em 1.5em;
+    font-family: "Space Mono", monospace;
+    color: var(--btn-text);
+    border-radius: 10px;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+}
+
+.container {
+  width: 90%;
+  max-width: 730px;
+  margin: 0.5em auto;
+  // padding: 5em 0;
+
+  @include mq($tablet-width) {
+    width: 75%;
+  }
+}
+
+.card {
+  background-color: var(--off-white);
+  border-radius: 20px;
+  padding: 2em;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include mq($tablet-width) {
+    padding: 3em;
+  }
+
+  @include mq($desktop-width) {
+    display: grid;
+    grid-template-columns: 2fr 3fr 3fr;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      "card-header card-header card-header"
+      ". repos repos"
+      ". info info";
+  }
+}
+
+.card-header {
+  grid-area: card-header;
+  display: grid;
+
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: repeat(4, auto);
+  grid-template-areas:
+    "image header"
+    "image username"
+    "image joined"
+    "bio bio";
+
+  @include mq($desktop-width) {
+    grid-template-columns: 2fr 3fr 3fr;
+    grid-template-areas:
+      "image header joined"
+      "image username ."
+      "image bio bio";
+  }
+
+  .placeholder-img {
+    grid-area: image;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 1.2em;
+
+    @include mq($tablet-width) {
+      width: 117px;
+      height: 117px;
+    }
+  }
+
+  .header-name {
+    grid-area: header;
+    font-size: 1rem;
+    color: var(--dark-grey);
+    // align-self: flex-end;
+
+    @include mq($tablet-width) {
+      font-size: 1.65rem;
+    }
+  }
+
+  .username-At {
+    grid-area: username;
+    color: var(--primary-blue);
+
+    @include mq($tablet-width) {
+      font-size: 1rem;
+    }
+  }
+
+  .joined {
+    grid-area: joined;
+    font-size: 0.75rem;
+    align-self: flex-start;
+
+    @include mq($tablet-width) {
+      font-size: 0.938rem;
+    }
+
+    @include mq($desktop-width) {
+      justify-self: flex-end;
+    }
+  }
+}
+
+.bio {
+  margin-top: 2em;
+  font-size: 0.75rem;
+  grid-area: bio;
+
+  @include mq($tablet-width) {
+    font-size: 0.938rem;
+  }
+}
+
+.repos-card {
+  width: 100%;
+  background-color: var(--light-grey);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.688rem;
+  margin: 2em 0;
+  padding: 1.5em 2.5em;
+  border-radius: 10px;
+  grid-area: repos;
+
+  @include mq($tablet-width) {
+    font-size: 0.813rem;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  p.numbers {
+    font-weight: bold;
+    color: var(--dark-grey);
+    font-size: 1rem;
+
+    @include mq($tablet-width) {
+      font-size: 1.375rem;
+    }
+  }
+}
+
+.info-and-icons {
+  grid-area: info;
+
+  p {
+    display: inline-block;
+    padding: 0.25em;
+  }
+
+  .icon {
+    vertical-align: middle;
+    margin-right: 0.5em;
+  }
+
+  .location-icon {
+    margin-right: 0.9em;
+  }
+
+  @include mq($tablet-width) {
+    font-size: 0.938rem;
+
+    display: flex;
+
+    .col-1 {
+      flex: 50%;
+    }
+
+    .col-2 {
+      flex: 50%;
+    }
+  }
+}
