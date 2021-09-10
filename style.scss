@@ -102,6 +102,7 @@ body {
   }
 
   .input {
+    width: 100%;
     font-family: "Space Mono", monospace;
     flex: 1;
     border: none;
@@ -314,6 +315,11 @@ body {
   .icon {
     vertical-align: middle;
     margin-right: 0.5em;
+  }
+
+  path,
+  g {
+    fill: var(--blue-grey);
   }
 
   .location-icon {

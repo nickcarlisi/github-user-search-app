@@ -115,6 +115,7 @@ body {
 }
 
 .form .input {
+  width: 100%;
   font-family: "Space Mono", monospace;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -406,6 +407,11 @@ body {
 .info-and-icons .icon {
   vertical-align: middle;
   margin-right: 0.5em;
+}
+
+.info-and-icons path,
+.info-and-icons g {
+  fill: var(--blue-grey);
 }
 
 .info-and-icons .location-icon {
