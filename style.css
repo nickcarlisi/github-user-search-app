@@ -167,6 +167,22 @@ body {
   }
 }
 
+.form .input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form .input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form .input:focus::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form .input:focus::placeholder {
+  color: transparent;
+}
+
 .form .no-result-error {
   color: red;
   margin-right: 1em;

@@ -4,6 +4,11 @@ const modeText = document.body.querySelector(".mode-text");
 const modeImage = document.body.querySelector(".mode-img");
 const noResultError = document.body.querySelector(".no-result-error");
 let searchResult = document.body.querySelector(".input");
+// const placeholder =
+
+searchResult.addEventListener("keypress", () => {
+  removeError();
+});
 
 const getUser = async function (searchResult) {
   const res = await fetch(`https://api.github.com/users/${searchResult}`);
@@ -15,12 +20,13 @@ const getUser = async function (searchResult) {
   } else {
     removeError();
     const json = await res.json();
-    console.log(json);
+
     return json;
   }
 };
 
 const showError = function () {
+  searchResult.textContent = "";
   noResultError.textContent = "No result";
 };
 
@@ -32,10 +38,12 @@ const createCard = (data) => {
   const card = document.body.querySelector(".card");
   card.innerHTML = "";
 
-  const date = data.created_at.slice(0, 10);
-  const year = date.slice(0, 4);
-  const day = date.slice(8, 10);
-  const month = date.slice(5, 7);
+  // convert date to style in mockup
+  const date = data.created_at;
+  const dateJoined = new Date(date);
+  const day = dateJoined.getDate();
+  const month = dateJoined.toLocaleString("en-us", { month: "short" });
+  const year = dateJoined.getFullYear();
 
   const markUp = `
       <div class="card-header">
